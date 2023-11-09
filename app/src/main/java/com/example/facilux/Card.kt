@@ -1,11 +1,16 @@
 package com.example.facilux
 
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "cards")
 data class Card(
-    val id: Long, // ID único do cartão no banco de dados (pode ser gerado automaticamente)
-    val title: String, // Título do cartão
-    val imageResourceId: Int, // Recurso de imagem associado ao cartão
-    var lightState: Int // Estado da lâmpada (por exemplo, LIGHT_ON ou LIGHT_OFF)
+    @PrimaryKey(autoGenerate = true)
+    var id: Long = 0,
+    val title: String,
+    val imageUriString: String? = null, // Pode ser uma String em vez de Uri
+    var lightState: Int = LIGHT_OFF
 ) {
     companion object {
         const val LIGHT_ON = 1

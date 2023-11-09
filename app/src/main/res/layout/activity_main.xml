@@ -1,33 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:gravity="center"
     tools:context=".MainActivity">
 
+    <!-- RecyclerView para exibir os itens -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_weight="1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        />
 
+    <!-- Botão para adicionar -->
     <Button
         android:id="@+id/addButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="30dp"
+        android:layout_gravity="right"
+        android:layout_marginBottom="16dp"
         android:layout_marginRight="30dp"
         android:text="+"
-        android:textSize="50dp"
-        tools:layout_editor_absoluteX="114dp"
-        tools:layout_editor_absoluteY="667dp"
-        tools:ignore="MissingConstraints" />
+        android:textSize="50dp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- FrameLayout para o Dialog -->
+    <FrameLayout
+        android:id="@+id/dialogContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#80000000"
+        android:visibility="gone"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:id="@+id/frame_layouy"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:gravity="center"
+            tools:context="FrameLayout">
+
+            <!-- EditText para o nome do comodo -->
+            <EditText
+                android:focusableInTouchMode="true"
+                android:textSize="20dp"
+                android:id="@+id/editTextName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nome do comodo"
+                android:autofillHints="comodo"
+                android:inputType="textNoSuggestions" />
+
+            <!-- ImageView para a pré-visualização da imagem -->
+            <ImageView
+                android:id="@+id/imagePreviewDialog"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:scaleType="fitCenter"
+                android:visibility="gone"
+                android:layout_marginTop="16dp" />
+
+            <!-- Botão para selecionar imagem -->
+            <Button
+                android:id="@+id/selectImageButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Selecionar Imagem"
+                android:layout_marginTop="16dp" />
+
+            <!-- Botão para confirmar -->
+            <Button
+                android:id="@+id/confirmButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Confirmar"
+                android:layout_marginTop="16dp" />
+
+        </LinearLayout>
+    </FrameLayout>
+
+</LinearLayout>
